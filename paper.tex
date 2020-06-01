@@ -257,7 +257,49 @@ From \cite{b7}, we can deduce that as much as genetic algorithms offer lots of a
 
 \section{Proposed Approach}
 
-Insert proposed approach here
+As already introduced, both the simulated annealing and genetic algorithms have their set of benefits and shortcomings. This paper approach tries to compensate each algorithm drawback with the advantage of the other. The role of the simulated annealing algorithm in our approach is to generate the initial population of the genetic algorithm used, as having an already-improved initial population will prevent the genetic algorithm from getting trapped in local minima. On the other side of the coin, the genetic algorithm spans the solution space in parallel via its population, which is much faster than the sequential spanning done by the simulated annealing algorithm. The proposed algorithm runs the simulated annealing algorithm on random placement configurations with a temperature value directly proportional to the number of cells in the input circuit to generate output configurations equal to the number of individuals in the initial population of the genetic algorithm. At the receiving end, the genetic algorithm evaluates each individual of the initial population according to the fitness function which sorts them with respect to their total wirelength, the shorter, the better. The crossover process is done by creating a new child placement configuration where each cell in this new placement is taken either from the first or the second parent while making sure that the cell taken at each crossover iteration does not coincide with another cell at the same coordinates. After the crossover process is executed between all the available cells, the generated configuration is mutated by swapping two randomly-chosen cells.
+
+\begin{algorithm}[H]
+    \caption{Proposed Algorithm}
+    \begin{algorithmic}[1]
+    \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+    \renewcommand{\algorithmicensure}{\textbf{Output:}}
+    \Require Circuit $C_{o}$
+    \Ensure  Optimized placement configuration $\eta$
+    \While{Population $\sigma$ is NOT filled completely}
+        \State Generate an initial random cells placement $P$
+        \State Set $\alpha = 0.995$
+        \State Set temperature $T = 2 * number\; of\; cells\; of\; C_{o}$
+        \State Set optimized circuit configuration $\Phi = P$
+        \While{$T > 1$}
+        \State $P^{'} = $ randomly generated cells placement
+        \State $\Delta C = wirelength(P^{'}) - wirelength(P)$
+        \If{$\Delta C < 0$}
+            \State $P = P^{'}$
+            \If{$wirelength(P) < wirelength(\Phi)$}
+                \State $\Phi = P$
+            \EndIf
+        \ElsIf{$rand(0,1) < e^{-\Delta C/T}$}
+            \State $P = P^{'}$
+        \EndIf
+        \State $T = T * \alpha$
+        \EndWhile
+        \State \textbf{Append} $\Phi$ to $\sigma$
+    \EndWhile
+    \While{The termination condition is NOT satisfied}
+        \State Sort $\sigma$ in descending order by the fitness level
+        \State $\sigma^{*} = crossover(\sigma)$
+        \State $\sigma^{*} = mutation(\sigma^{*})$
+        \algrenewcommand\algorithmicfor{\textbf{foreach}}
+        \For{$\sigma^{*}_{i} \in \sigma^{*}$}
+            \State Evaluate $\sigma^{*}_{i}$ fitness level
+        \EndFor
+        \State $\sigma = \sigma^{*}$
+    \EndWhile
+    \State $\eta = $ the fittest individual of $\sigma$
+    \State \textbf{return} $\eta$
+    \end{algorithmic} 
+\end{algorithm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXPERIMENTAL ANALYSIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
