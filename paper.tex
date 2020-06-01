@@ -337,16 +337,67 @@ The total wirelength and the time consumed finding the optimum solution are usua
 
 \subsection{Performance Comparisons}
 
-Insert experiments comparisons here
+To assess the performance of the proposed algorithm implementation, three test cases are addressed and analyzed in the form of three experiments. In each experiment, the output total wirelength of the proposed algorithm implementation is compared to the output total wirelength of different standard algorithms used for solving the placement problem such as simulated annealing, a genetic algorithm.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OBSERVATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Experiment 1}
 
-\subsection{Observation}
+In this experiment, the input population size equals $4$.
 
-Insert observation here
+\begin{table}[H]
+    \caption{Experiment 1 Results}
+    \centering
+    \begin{tabular}{||c c c c c||}
+        \hline
+        \textit{\textbf{\# of Cells}} & \textit{\textbf{Initial Placement}} & \textit{\textbf{SA}} & \textit{\textbf{GA}} & \textit{\textbf{Proposed Algorithm}}\T \B \\
+    \hline
+    \hline
+    7 & 66 & 48 & 45 & 44 \T \B\\ \hline
+    20 & 245 & 170 & 156 & 151 \T \B\\ \hline
+    40 & 375 & 348 & 335 & 296 \T \B\\ \hline
+    52 & 461 & 461 & 426 & 394 \T \B\\ \hline
+     \end{tabular}
+    \label{table2}
+\end{table}
 
+\subsubsection{Experiment 2}
+
+In this experiment, the input population size equals $8$.
+
+\begin{table}[H]
+    \caption{Experiment 2 Results}
+    \centering
+    \begin{tabular}{||c c c c c||}
+        \hline
+        \textit{\textbf{\# of Cells}} & \textit{\textbf{Initial Placement}} & \textit{\textbf{SA}} & \textit{\textbf{GA}} & \textit{\textbf{Proposed Algorithm}}\T \B \\
+    \hline
+    \hline
+    7 & 52 & 40 & 36 & 30 \T \B\\ \hline
+    20 & 209 & 169 & 159 & 131 \T \B\\ \hline
+    40 & 452 & 351 & 288 & 281 \T \B\\ \hline
+    52 & 557 & 467 & 391 & 388 \T \B\\ \hline
+     \end{tabular}
+    \label{table3}
+\end{table}
+
+\subsubsection{Experiment 3}
+
+In this experiment, the input population size equals $20$.
+
+\begin{table}[H]
+    \caption{Experiment 3 Results}
+    \centering
+    \begin{tabular}{||c c c c c||}
+        \hline
+        \textit{\textbf{\# of Cells}} & \textit{\textbf{Initial Placement}} & \textit{\textbf{SA}} & \textit{\textbf{GA}} & \textit{\textbf{Proposed Algorithm}}\T \B \\
+    \hline
+    \hline
+    7 & 62 & 45 & 29 & 29 \T \B\\ \hline
+    20 & 240 & 170 & 127 & 125 \T \B\\ \hline
+    40 & 383 & 343 & 223 & 219 \T \B\\ \hline
+    52 & 510 & 453 & 313 & 316 \T \B\\ \hline
+     \end{tabular}
+    \label{table4}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONCLUSION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
