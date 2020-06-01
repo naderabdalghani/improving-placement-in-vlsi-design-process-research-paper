@@ -266,8 +266,8 @@ As already introduced, both the simulated annealing and genetic algorithms have 
     \renewcommand{\algorithmicensure}{\textbf{Output:}}
     \Require Circuit $C_{o}$
     \Ensure  Optimized placement configuration $\eta$
+    \State Generate an initial random cells placement $P$
     \While{Population $\sigma$ is NOT filled completely}
-        \State Generate an initial random cells placement $P$
         \State Set $\alpha = 0.995$
         \State Set temperature $T = 2 * number\; of\; cells\; of\; C_{o}$
         \State Set optimized circuit configuration $\Phi = P$
