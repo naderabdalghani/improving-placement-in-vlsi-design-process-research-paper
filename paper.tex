@@ -178,28 +178,27 @@ Where $\alpha$ is the cooling rate. In our case, it has a constant value of $0.9
     \begin{algorithmic}[1]
     \renewcommand{\algorithmicrequire}{\textbf{Input:}}
     \renewcommand{\algorithmicensure}{\textbf{Output:}}
-    \Require Circuit $C_{o}$
-    \Ensure  Optimized placement configuration $\Phi$
-       \State Generate an initial random cells placement $P$
-     \State Set $\alpha = 0.995$
-     \State Set temperature $T = 2 * number\; of\; cells\; of\; C_{o}$
-     \State Set optimized circuit configuration $\Phi = P$
-     \While{$T > 1$}
-       \State $P^{'} = $ randomly generated cells placement
-       \State $\Delta C = wirelength(P^{'}) - wirelength(P)$
+    \Ensure  Optimized solution $S$
+       \State Create an initial solution $x$
+     \State Set $\alpha \in (0,1)$, temperature $T$
+     \State Set $S = x$
+     \While{Stopping criterion is NOT satisfied}
+       \State $x^{'} = $ a neighbouring solution
+       \State Calculate $C(x^{'})$
+       \State Calculate $\Delta C = C(x^{'}) - C(x)$
        \If{$\Delta C < 0$}
-           \State $P = P^{'}$
-           \If{$wirelength(P) < wirelength(\Phi)$}
-               \State $\Phi = P$
+           \State $x = x^{'}$
+           \If{$C(x) < C(S)$}
+               \State $S = x$
            \EndIf
        \ElsIf{$rand(0,1) < e^{-\Delta C/T}$}
-           \State $P = P^{'}$
+           \State $x = x^{'}$
        \EndIf
        \State $T = T * \alpha$
      \EndWhile
-    \State \textbf{return} $\Phi$
+    \State \textbf{return} $S$
     \end{algorithmic} 
-    \end{algorithm}
+\end{algorithm}
 
 There is no doubt that this widely-used algorithm yields excellent results, as a matter of fact, it can produce the global optimum result given enough time which makes it a solid contender for solving the end-case placement problem. Though it still has its set of drawbacks. For instance, it is extremely slow especially if rooting for the global optimum solution, not to mention that it suffers hugely if there is a scarce number of local minima.
 
