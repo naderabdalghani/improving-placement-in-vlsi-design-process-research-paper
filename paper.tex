@@ -143,6 +143,25 @@ At each iteration, cells are rearranged to generate a new placement configuratio
 \medskip
 
 \subsubsection{Cost Function}
+
+The cost function consists of two terms as follows:
+\begin{equation}
+    C = C_{1} + C_{2}
+\end{equation}
+Where $C_{1}$ is the measure of the total wirelength and $C_{2}$ is the measure of total overlap of the chip which is sometimes neglected as in our case but it is used in other papers \cite{b16} nevertheless.
+
+Let $d_{h}^{ij}$ $d_{v}^{ij}$ be the horizontal and the vertical distance between cell $i$ and its $j^{th}$ out cell respectively, the total wire length of the chip can be expressed as the following equation 
+\begin{equation}
+    C_{1} = \sum_{i=cell}^{n} \sum_{j=out cell}^{n} (d_{h}^{ij} + d_{v}^{ij})
+\end{equation}
+Where $n$ is the total number of cells in the chip 
+In case of the second term $C_{2}$, whenever two cells are swapped, they might overlap, therefore, $O_{ij}$ indicates the overlap between cell $i$ and cell $j$, this overlap is undesirable and it negatively affects the cost function by increasing its value by the term $C_{2}$ which is the summation of each overlap value squared.
+\begin{equation}
+    C_{2} = \sum_{i!=j} (O_{ij}^{2})
+\end{equation}
+The cost function is calculated at each iteration after generating a new cells layout.
+\medskip
+
 \subsubsection{Annealing Schedule}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
