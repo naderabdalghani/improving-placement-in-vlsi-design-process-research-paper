@@ -75,7 +75,25 @@ The result of the astronomical impact of the very large scale integration (VLSI)
 
 \section{Related Work}
 
-As already stated, the placement problem is an NP-complete problem where its optimum solution can be found by trying all possible cells configurations, but due to the tremendous number of cells that exist in almost all VLSI designs which range from millions to billions of cells, it would be utterly impractical to compute every possible configuration in order to find the fittest one. Because of this nature, previous literature made significant improvements in terms of solution fitness and the amount of time consumed through using heuristic techniques such as simulated annealing used in \cite{b7}, \cite{b10}, \cite{b11}, \cite{b12}, \cite{b13} and \cite{b14}, min-cut placement algorithm used in \cite{b1} and \cite{b15} and genetic algorithms used in \cite{b2}, \cite{b3} and \cite{b7}. However, optimizing placement algorithms isn't limited to heuristic approaches only as others have used different approaches to achieve solid results. For instance, Natarajan et al \cite{b8} used an analytical placement algorithm that is based on the quadratic placement approach. 
+As already stated, the placement problem is an NP-complete problem where its optimum solution can be found by trying all possible cells configurations, but due to the tremendous number of cells that exist in almost all VLSI designs which range from millions to billions of cells, it would be utterly impractical to compute every possible configuration in order to find the fittest one. Because of this nature, previous literature made significant improvements in terms of solution fitness and the amount of time consumed through using heuristic techniques such as simulated annealing used in \cite{b7}, \cite{b10}, \cite{b11}, \cite{b12}, \cite{b13} and \cite{b14}, min-cut placement algorithm used in \cite{b1} and \cite{b15} and genetic algorithms used in \cite{b2}, \cite{b3} and \cite{b7}. However, optimizing placement algorithms isn't limited to heuristic approaches only as others have used different approaches to achieve solid results. For instance, Natarajan et al \cite{b8} used an analytical placement algorithm that is based on the quadratic placement approach.
+
+\subsection{Simulated Annealing}
+
+Simulated annealing is one of the popular and most effective algorithms among all placement algorithms, in fact, it is generally used as an optimization technique for combinatorial problems. The basic idea of this method comes from the annealing treatment in metallurgy. Annealing in metallurgy is used to accomplish a crystalline lattice structure of the particles of solid metal as it reflects a minimum energy state for the solid. This is achieved by heating the metal in a heat bath until it reaches a temperature named the initial temperature of the annealing process at which all particles are randomly arranged, then whenever the metal reaches thermal equilibrium the temperature is reduced gradually according to a cooling schedule otherwise the resulting crystal will not mirror a minimum energy state. This analogy applies to the simulated annealing metaheuristic where an initial value of temperature $T$ is set and at each iteration, the positions of the cells get scrambled around legal regions then the cost function $C$ is measured, a result is accepted whenever it leads to a decreasing cost function, however, if a result leads to an increasing cost function, it is accepted if and only if the move has a probability greater than a random value between $0$ and $1$. The probability function is defined as follows:
+
+    \begin{equation}
+        P = e^{\frac{-\Delta C}{T}}
+    \end{equation}
+
+At the end of each iteration, the temperature value decreases by multiplying it by a cooling factor which is less than $1$. This process iterates until the temperature goes below $1$. It is clear that the performance of this algorithm is based upon four parameters: 
+
+    \begin{itemize}
+        \item Initial configuration 
+        \item Move generation function
+        \item Cost function 
+        \item Annealing schedule
+    \end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROPOSED APPROACH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
