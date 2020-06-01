@@ -131,8 +131,17 @@ In this step, the individual cells are extracted from the circuit and for each c
 \end{table}
 
 At this step, the total wirelength of cells interconnections will most likely be large due to them being placed randomly. Hence the presence of the rest of the subsequent procedures which aim to achieve the optimal placement of the cells.
+\medskip
 
 \subsubsection{Move Generation Function}
+
+At each iteration, cells are rearranged to generate a new placement configuration of the cells. To do so, there are two possible strategies used:
+\begin{itemize}
+    \item Move cells randomly to new legal positions 
+    \item Swap the positions of each two cells
+\end{itemize}
+\medskip
+
 \subsubsection{Cost Function}
 \subsubsection{Annealing Schedule}
 
