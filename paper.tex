@@ -164,6 +164,16 @@ The cost function is calculated at each iteration after generating a new cells l
 
 \subsubsection{Annealing Schedule}
 
+At first, the temperature $T$ is initialized to a very large value, and at every iteration, the temperature is reduced using the following equation:
+\begin{equation}
+    T = \alpha*T
+\end{equation}
+Where $\alpha$ is the cooling rate. In our case, it has a constant value of $0.995$. Yet, it can be set dynamically in the following fashion: Initially, it is set to a small value which contributes to the rapid decrease in temperature, then in the middle of the annealing process the temperature is reduced slowly via a larger cooling rate value. When the temperature is relatively low, the temperature decreases rapidly again until the stopping condition which is when the temperature falls below $1$ is met.
+
+\medskip
+
+There is no doubt that this widely-used algorithm yields excellent results, as a matter of fact, it can produce the global optimum result given enough time which makes it a solid contender for solving the end-case placement problem. Though it still has its set of drawbacks. For instance, it is extremely slow especially if rooting for the global optimum solution, not to mention that it suffers hugely if there is a scarce number of local minima.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROPOSED APPROACH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
