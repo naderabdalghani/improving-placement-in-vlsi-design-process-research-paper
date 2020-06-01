@@ -85,14 +85,14 @@ As already stated, the placement problem is an NP-complete problem where its opt
 Simulated annealing is one of the popular and most effective algorithms among all placement algorithms, in fact, it is generally used as an optimization technique for combinatorial problems. The basic idea of this method comes from the annealing treatment in metallurgy. Annealing in metallurgy is used to accomplish a crystalline lattice structure of the particles of solid metal as it reflects a minimum energy state for the solid. This is achieved by heating the metal in a heat bath until it reaches a temperature named the initial temperature of the annealing process at which all particles are randomly arranged, then whenever the metal reaches thermal equilibrium the temperature is reduced gradually according to a cooling schedule otherwise the resulting crystal will not mirror a minimum energy state. This analogy applies to the simulated annealing metaheuristic where an initial value of temperature $T$ is set and at each iteration, the positions of the cells get scrambled around legal regions then the cost function $C$ is measured, a result is accepted whenever it leads to a decreasing cost function, however, if a result leads to an increasing cost function, it is accepted if and only if the move has a probability greater than a random value between $0$ and $1$. The probability function is defined as follows:
 
     \begin{equation}
-        P = e^{\frac{-\Delta C}{T}}
+        P = e^{-\Delta C/T}
     \end{equation}
 
 At the end of each iteration, the temperature value decreases by multiplying it by a cooling factor which is less than $1$. This process iterates until the temperature goes below $1$. It is clear that the performance of this algorithm is based upon four parameters\slash steps:
 
 \subsubsection{Initial Configuration}
 In this step, the individual cells are extracted from the circuit and for each cell, the inputs and outputs are determined. The following diagram and table show the circuit is decomposed.
-\begin{figure}[!h]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[thick, scale = 2]
         \node[and gate US, draw, rotate=0, logic gate inputs=nn] at (0,1) (and1) {1};
