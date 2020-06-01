@@ -31,12 +31,14 @@ genetic algorithm is taken out of the idea of "survival of the fittest", it's us
 \newline
 to use the genetic algorithm we have to form a population then produce children and do mutation .
 \newline
+\textbf{For population:} we will create the population out of simulated annealing solutions.
 \textbf{For mutation:} we will swap two cells randomly.
 \newline
 \textbf{For offspring:} if the first parent have placement (x,y) and second parent placement is (z,k) then the child will have a placement like (x,k).
 \subsection{proposed algorithm}
-our proposed algorithm will combine the last two algorithms.
-\newline\newline
+our proposed algorithm will combine the last two algorithms, by combining these algorithm we will generate some solutions by simulated annealing then use these solutions as population for the genetic algorithm, that will enhance the result of genetic algorithm as the population is no longer randomly generated but considers as optimized solution.
+\newline
+\newline
 \textbf{algorithm steps}:
 \begin{enumerate} 
 \item generating some solutions (circuits) from simulated annealing.
@@ -51,10 +53,14 @@ our proposed algorithm will combine the last two algorithms.
 \SetAlgoLined
 \KwResult{final placement }
  generate random placement (x,y) for cells\;
- create multiple solutions using simulated annealing\;
+ \While{loop four times}{
+ run simulated annealing and get a solution\;
+ }
+ create population for genetic out of the simulated annealing solutions\;
  \While{loop on population}{
-  create the parents and produce the child\;
-  do the mutation on children\;
+  create the parents\;
+  produce the children\;
+  do the mutation\;
  }
  \caption{proposed algorithm}
 \end{algorithm}
