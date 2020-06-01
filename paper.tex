@@ -203,6 +203,55 @@ Where $\alpha$ is the cooling rate. In our case, it has a constant value of $0.9
 
 There is no doubt that this widely-used algorithm yields excellent results, as a matter of fact, it can produce the global optimum result given enough time which makes it a solid contender for solving the end-case placement problem. Though it still has its set of drawbacks. For instance, it is extremely slow especially if rooting for the global optimum solution, not to mention that it suffers hugely if there is a scarce number of local minima.
 
+\subsection{Genetic Algorithm}
+
+Genetic algorithms are metaheuristics based on the concepts of Charles Darwin's theory of biological evolution. Its idea is powered by the natural principle known as “survival of the fittest” where the fittest individuals have the highest probability of survival and to pass their genes to their offspring for further reproduction. On the other hand, the less fit individuals have the highest probability to die out. This resemblance is commonly used for creating optimization algorithms for combinatorial problems. But given the characteristics of the VLSI design placement problem, a genetic algorithm can also be employed to solve it as in \cite{b2}. Genetic algorithms effectiveness is defined by the following parameters:
+
+\subsubsection{Initial Population}
+
+The initial population individuals are a subset of the solution space. They represent the first generation and they are usually created randomly. However, by intuition, the better the first generation is the lesser time consumed by the algorithm to find better individuals. Each individual is represented by a chromosome which reflects its information in an appropriate encoding.
+
+\medskip
+
+\subsubsection{Crossover}
+
+Crossover is quite similar to sexual reproduction in biology as it is used for combining the genetic information of two individuals "parents" of the current population to generate a new solution. Solutions are usually mutated before being added to the new population.
+
+\medskip
+
+\subsubsection{Mutation}
+
+The mutation process operates on the output of the crossover process. It introduces new variations in their chromosomes in an attempt to span the whole solution space.
+
+\medskip
+
+\subsubsection{Selection}
+
+Selection is the criteria with which the selection of the fittest individuals of the generated offspring for later reproduction occurs. It is usually implemented as a fitness function that is evaluated for each individual.
+
+\medskip
+
+\begin{algorithm}[H]
+\caption{Genetic Algorithm Pseudo Code}
+    \begin{algorithmic}[1]
+    \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+    \renewcommand{\algorithmicensure}{\textbf{Output:}}
+    \Ensure  The fittest Individual according to a certain criteria
+        \State Randomly generate an initial population
+        \State Evaluate the fitness of each individual of the population
+        \While{The fittest Individual NOT found}
+            \State Select the fittest individuals
+            \State Generate new individuals using the crossover operator
+            \State Mutate the new individuals
+            \State Evaluate the fitness of the new individuals
+            \State Replace the worst individuals of the population with the best new individuals
+        \EndWhile
+        \State \textbf{return} The fittest individual
+    \end{algorithmic}
+\end{algorithm}
+
+From \cite{b7}, we can deduce that as much as genetic algorithms offer lots of advantages like having relatively easy implementations, being faster than simulated annealing to finding fit solutions and being able to span the solution space more rapidly. But despite those benefits, they have some hindering limitations. For example, they cannot find the exact minima value despite spanning most of the solution space quickly and they may also be trapped at local minima.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROPOSED APPROACH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
